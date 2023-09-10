@@ -1,0 +1,47 @@
+using System;
+using System.Collections.Generic;
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] lst;
+
+            //чтение  данных
+            Console.WriteLine("Введите числа через запятую: ");
+            string input = Console.ReadLine();
+
+            lst = input.Split(new char[] { ' ', ',' }); //разделяем входные данные по разделителям
+
+            //перебираем числа
+            foreach(string str_number in lst)
+            {
+                if (str_number == "") continue; //если элемент пустой - пропускаем его
+
+                int number = Convert.ToInt32(str_number); //конвертируем в число
+
+                if(number % 3 == 0 && number % 5 == 0)
+                {
+                    Console.Write("fizz-buzz" + ", "); //кратен 3 и 5
+                }
+                else if(number % 3 == 0)
+                {
+                    Console.Write("fizz" + ", "); //кратен только 3
+                }
+                else if(number % 5 == 0)
+                {
+                    Console.Write("buzz" + ", "); //кратен только 5
+                }
+                else
+                {
+                    Console.Write(number + ", "); //не кратен ни 5, ни 3
+                }
+            }
+
+            Console.ReadKey();
+
+        }
+    }
+}
