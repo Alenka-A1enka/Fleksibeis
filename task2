@@ -1,0 +1,60 @@
+using System;
+using System.Collections.Generic;
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] lst;
+
+            //чтение  данных
+            Console.WriteLine("Введите числа через запятую: ");
+            string input = Console.ReadLine();
+
+            lst = input.Split(new char[] { ' ', ',' }); //разделяем входные данные по разделителям
+
+            //перебираем числа
+            foreach(string str_number in lst)
+            {
+                if (str_number == "") continue; //если элемент пустой - пропускаем его
+
+
+                int number = Convert.ToInt32(str_number); //конвертируем в число
+
+                string result = ""; //хранит итоговое значение
+
+                if(number % 3 == 0)
+                {
+                    result += "fizz-"; //префикс кратности 3
+                }
+                if(number % 5 == 0)
+                {
+                    result += "buzz-"; //префикс кратности 5
+                }
+
+
+                if(number % 4 == 0)
+                {
+                    result += "muzz-"; //префикс кратности 4
+                }
+                if(number % 7 == 0)
+                {
+                    result += "guzz"; //префикс кратности 7
+                }
+
+
+                if (result == "") result = number.ToString(); //если кратность не выявлена
+
+                //если в конце лишнее тире убираем его
+                if (result[result.Length - 1] == '-') result = result.Substring(0, result.Length - 1);
+                
+                Console.Write(result + ", "); //вывод результата
+            }
+
+            Console.ReadKey();
+
+        }
+    }
+}
